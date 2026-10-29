@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moda Urbana - Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="login-body">
+    <div class="login-card">
+        <h2>MODA URBANA</h2>
+        <p>Crea una nueva cuenta</p>
+
+        {% with mensajes = get_flashed_messages() %}
+            {% if mensajes %}
+                {% for mensaje in mensajes %}
+                    <div class="alert-error">{{ mensaje }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="input-group">
+                <label>Usuario</label>
+                <input type="text" name="usuario" required placeholder="Elige un usuario">
+            </div>
+            <div class="input-group">
+                <label>Contraseña (mínimo 8 caracteres)</label>
+                <input type="password" name="clave" minlength="8" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn-login">Registrarme</button>
+        </form>
+
+        <div class="login-links">
+            <p><a href="{{ url_for('login') }}">← Volver al login</a></p>
+        </div>
+    </div>
+</body>
+</html>
